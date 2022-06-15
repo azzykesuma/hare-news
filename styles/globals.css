@@ -51,11 +51,39 @@ table {
 }
 
 /* -----------featured news -----------------*/
+
+.tabletWrapper {
+	display: flex;
+	gap : 10px;
+}
+.mobileWrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.desktopLayout {
+	width: 70%;
+}
+
+
+.hero_img_mobile {
+	height : 200px;
+}
+
+.hero_img_tablet {
+	height : 100%;
+}
+
 .tabletView {
 	display: flex;
+	align-items: end;
+	width : 50%;
 }
 
 .mobileView {
 	display: flex;
-	flex-direction: column;
+}
+
+.tabletImg {
+	width: 100%;
 }
