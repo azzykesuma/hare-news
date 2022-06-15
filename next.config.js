@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
 
   images : {
-    domains : ['pict.sindonews.net','cdn-2.tstatic.net', 'cloud.jpnn.com']
+    domains : ['pict.sindonews.net','cdn-2.tstatic.net',
+     'cloud.jpnn.com','cdns.klimg.com']
   }
 }
 

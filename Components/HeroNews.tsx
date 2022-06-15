@@ -5,34 +5,43 @@ import Image from 'next/image';
 
 const HeroNews = ({news}: any) => {
     const matches = useMediaQuery('(min-width:600px)');
-    console.log(news);
+    const filterImage = news.filter(function(image: any) {
+        return image.image_url !== null
+    })
+    console.log(filterImage[0].image_url);
+
+
+
     return (
     <>
-        {news.map((item:any) => (
-            <>
-                <p>{item.title}</p>
-                {item.image_url ? (
-                    <Image height={300} width={300} src={item.image_url} />
-                ) : null}
-            </>
-            
-        ))}
+        <Grid container spacing={3}>
+            <Grid item xs={12}>
+                <Box sx={{
+                    backgroundImage : `url(${filterImage[0].image_url})`,
+                    height: '200px',
+                    backgroundSize: 'cover',
+                }}></Box>
+            </Grid>
+        </Grid>
         <Box className={matches ? 'tabletView' : 'mobileView'}
         sx={{gap : '20px'}}
         >
-        <Grid container spacing={3}>
-            <Grid item xs={12}>
-                <Box sx={{backgroundColor : 'red', height : '100%'}}>item 1</Box>
+            <Grid container spacing={3}>
+                <Grid item xs={6} sm={12}>
+                    <Box sx={{
+                        backgroundImage : `url(${filterImage[1].image_url})`,
+                        height: '200px',
+                        backgroundSize: 'cover',
+                        }}></Box>
+                </Grid>
+                <Grid item xs={6} sm={12}>
+                    <Box sx={{
+                        backgroundImage : `url(${filterImage[2].image_url})`,
+                        height: '200px',
+                        backgroundSize: 'cover',
+                    }}></Box>
+                </Grid>
             </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-            <Grid item xs={6} sm={12}>
-                <Box  sx={{backgroundColor : 'yellow'}}>item 2</Box>
-            </Grid>
-            <Grid item xs={6} sm={12}>
-                <Box  sx={{backgroundColor : 'blue'}}>item 3</Box>
-            </Grid>
-        </Grid>
         </Box>
     </>
     )
