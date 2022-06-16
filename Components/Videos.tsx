@@ -10,7 +10,12 @@ const Videos = ({news} : any) => {
     })
     const matches = useMediaQuery('(min-width:600px)');
     return (
-        <Container sx={{ marginTop : '5em'}}>
+        <Box
+        sx={{
+            maxWidth : '900px',
+            padding : '20px'
+        }}
+        >
             <Typography variant='h4' component='h2'
             sx={{fontFamily : 'Roboto serif', fontWeight : '500',
             textAlign : 'center', marginBottom : '20px'}}
@@ -116,7 +121,7 @@ const Videos = ({news} : any) => {
                     </Box>
                 </SplideSlide>
             </Splide>
-        </Container>
+        </Box>
     )
 }
 

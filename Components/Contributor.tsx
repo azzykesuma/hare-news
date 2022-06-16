@@ -7,10 +7,15 @@ const Contributor = ({news} : any) => {
         return image.image_url !== null
     })
     return (
-       <Container>
+       <Box
+       sx={{
+        maxWidth : '900px',
+        padding : '20px'
+       }}
+       >
             <Typography variant='h4' component='h2'
             sx={{fontFamily : 'Roboto serif', fontWeight : '500',
-            textAlign : 'center', marginBottom : '20px', marginTop : '2em'}}
+            textAlign : 'center', marginBottom : '20px', marginTop : '1em'}}
             >
                 Contributor section
             </Typography>
@@ -112,7 +117,7 @@ const Contributor = ({news} : any) => {
                     </Box>
                 </Grid>
             </Grid>
-       </Container>
+       </Box>
     )
 }
 

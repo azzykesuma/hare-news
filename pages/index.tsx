@@ -1,4 +1,4 @@
-import { Container,Box } from '@mui/material'
+import { Container,Box,Divider } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useMediaQuery } from '@mui/material'
@@ -8,6 +8,7 @@ import HeroNews from '../Components/HeroNews'
 import SideArticle from '../Components/SideArticle'
 import Videos from '../Components/Videos'
 import Contributor from '../Components/Contributor'
+import Business from '../Components/Business';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const apikey = process.env.API_KEY;
@@ -38,6 +39,8 @@ const Home: NextPage = ({news}: any) => {
       </Box>
       <Videos news={news.results} />
       <Contributor news={news.results}/>
+      {/* news sections */}
+      <Business />
     </Container>
   )
 }

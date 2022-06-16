@@ -9,16 +9,30 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { useState } from 'react';
+import {useMediaQuery,Button,Menu,MenuItem} from '@mui/material';
 import Link from 'next/link'
 
 const Appbar = () => {
+    const matches = useMediaQuery('(min-width:600px)');
     const [open,setOpen] = useState(false);
+    const [anchorEl,setAnchorEl] = useState(null);
+
+    const menuOpen = Boolean(anchorEl);
+
+    const handleClick = (e : any) => {
+        setAnchorEl(e.currentTarget);
+    }
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    }
 
     const handleDrawerOpen = () => {
         setOpen(!open);
     }
     return (
         <div>
+            {
             <AppBar position='static'
             sx={{
                 backgroundColor : '#3891A6'
@@ -31,9 +45,45 @@ const Appbar = () => {
                 }}
                 >
                     <Typography>Hare News</Typography>
-                    <IconButton onClick={handleDrawerOpen}><MenuIcon sx={{color : '#fff'}} /></IconButton>
+                    {/* removing mobile nav in 600 px */}
+                    {matches ? 
+                        <ul className='tabletNav'>
+                            <li>
+                                <Button
+                                id='news-menu'
+                                aria-controls={menuOpen ? 'nav-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={menuOpen ? 'true' : undefined}
+                                onClick={handleClick}
+                                variant='text'
+                                disableRipple
+                                sx={{color : 'white', fontFamily : 'Roboto serif', fontWeight : '400'}}
+                                >News</Button>
+                                <Menu
+                                id="nav-menu"
+                                anchorEl={anchorEl}
+                                open={menuOpen}
+                                onClose={handleClose}
+                                MenuListProps={{
+                                  'aria-labelledby': 'news-menu',
+                                }}
+                                >
+                                    <MenuItem onClick={handleClose}>Health</MenuItem>
+                                    <MenuItem onClick={handleClose}>Environment</MenuItem>
+                                    <MenuItem onClick={handleClose}>Business</MenuItem>
+                                    <MenuItem onClick={handleClose}>Politic</MenuItem>
+                                </Menu>
+                            </li>
+                            <li><Link href='/videos'><a>Videos</a></Link></li>
+                            <li><Link href='/contributor'><a>Contributor</a></Link></li>
+                        </ul>
+                    : 
+                    <IconButton onClick={handleDrawerOpen}>
+                        <MenuIcon sx={{color : '#fff'}} />
+                    </IconButton>}
                 </Toolbar>
             </AppBar>
+            }
             {/* nav menu */}
             { open ? (
                 <Box >

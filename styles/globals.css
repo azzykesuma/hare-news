@@ -50,6 +50,12 @@ table {
 	text-decoration: underline;
 }
 
+.tabletNav {
+	display : flex;
+	align-items: center;
+	gap : 10px;
+}
+
 /* -----------featured news -----------------*/
 
 .tabletWrapper {
