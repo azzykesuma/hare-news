@@ -1,19 +1,39 @@
 import { Box, Divider } from "@mui/material";
 import Image from 'next/image';
-import { GetServerSideProps } from "next";
 
-export const getServerSideProps : GetServerSideProps = async () => {
-    const apikey = process.env.API_KEY;
-    const res = await fetch(`https://newsdata.io/api/1/news?apikey=pub_8265eed20697d4f814decdd2838578db10c6&language=en`);
-    const news = await res.json();
 
-    return {
-        props : {news}
-    }
-}
 
 const Business = ({news} : any) => {
-    console.log(news);
+    let topCategory: any = []
+    let businessCategory: any = []
+    let politicCategory: any = []
+    let healthCategory: any = []
+    const filterImage = news.filter(function(image: any) {
+        return image.image_url !== null
+    })
+
+    // filtering category
+    // wtf is this ??????????????
+    for(let i = 0; i < filterImage.length; i++) {
+       if(filterImage[i].category[0] === 'top') {
+        topCategory.push(filterImage[i])
+       }
+
+       if(filterImage[i].category[0] === 'business') {
+        businessCategory.push(filterImage[i])
+       }
+
+       if(filterImage[i].category[0] === 'politic') {
+        politicCategory.push(filterImage[i])
+       }
+
+       if(filterImage[i].category[0] === 'health') {
+        healthCategory.push(filterImage[i])
+       }
+       
+    }
+
+    
     return (
         <Box
         sx={{
@@ -22,13 +42,10 @@ const Business = ({news} : any) => {
         }}
         >
             <Divider textAlign='left'>Business</Divider>
-
-            {news.map((item : any) => {
+            { filterImage.map((item : any) => {
                 return (
-                    <Box
-                    sx={{display:'flex'}}
-                    >
-                        {/* <Image src={item.image_url} height={150} width={200} /> */}
+                    <Box>
+                        <Image src={item.image_url} alt={item.title} width={300} height={200} />
                     </Box>
                 )
             })}

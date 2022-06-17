@@ -21,6 +21,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
+
 const Home: NextPage = ({news}: any) => {
   const matches = useMediaQuery('(min-width:1200px)');
   return (
@@ -40,7 +41,7 @@ const Home: NextPage = ({news}: any) => {
       <Videos news={news.results} />
       <Contributor news={news.results}/>
       {/* news sections */}
-      <Business />
+      <Business news={news.results} />
     </Container>
   )
 }
