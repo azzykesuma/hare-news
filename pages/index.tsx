@@ -8,7 +8,7 @@ import HeroNews from '../Components/HeroNews'
 import SideArticle from '../Components/SideArticle'
 import Videos from '../Components/Videos'
 import Contributor from '../Components/Contributor'
-import Business from '../Components/Business';
+import NewsCategory from '../Components/NewsCategory';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const apikey = process.env.API_KEY;
@@ -41,7 +41,7 @@ const Home: NextPage = ({news}: any) => {
       <Videos news={news.results} />
       <Contributor news={news.results}/>
       {/* news sections */}
-      <Business news={news.results} />
+      <NewsCategory news={news.results} />
     </Container>
   )
 }

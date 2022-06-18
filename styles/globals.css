@@ -82,7 +82,6 @@ table {
 
 .tabletView {
 	display: flex;
-	align-items: end;
 	width : 50%;
 }
 
@@ -92,4 +91,13 @@ table {
 
 .tabletImg {
 	width: 100%;
+}
+
+/*----------------------- news category-------------------- */
+
+.newsImage {
+	flex-shrink: 0;
+}
+.newsText {
+	font-size: 2vw;
 }
