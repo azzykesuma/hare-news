@@ -4,7 +4,7 @@ const nextConfig = {
 
   images : {
     domains : ['pict.sindonews.net','cdn-2.tstatic.net',
-     'cloud.jpnn.com','cdns.klimg.com']
+     'cloud.jpnn.com','cdns.klimg.com', 'images.ctfassets.net']
   }
 }
 

@@ -3,9 +3,7 @@ import { Container, Typography, Grid,
 } from '@mui/material'
 
 const Contributor = ({news} : any) => {
-    const filterImage = news.filter(function(image: any) {
-        return image.image_url !== null
-    })
+
     return (
        <Box
        sx={{
@@ -22,7 +20,7 @@ const Contributor = ({news} : any) => {
             <Grid container spacing={2}>
                 <Grid item xs={6} lg={3}>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[0].image_url})`,
+                        backgroundImage : `url(${news[1].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         height : '150px',
@@ -37,16 +35,16 @@ const Contributor = ({news} : any) => {
                             }}
                             ><Typography color='white'
                             sx={{fontFamily : 'Roboto serif', fontSize : '0.8em'}}
-                            >{filterImage[0].title}</Typography>
+                            >{news[0].fields.newsTitle}</Typography>
                             <Typography color='white'
                             sx={{fontFamily : 'Roboto serif', fontSize : '0.6em'}}
-                            >{filterImage[0].source_id}</Typography>
+                            >{news[0].fields.author}</Typography>
                             </Box>
                     </Box>
                 </Grid>
                 <Grid item xs={6} lg={3}>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[1].image_url})`,
+                        backgroundImage : `url(${news[1].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         height : '150px',
@@ -61,16 +59,16 @@ const Contributor = ({news} : any) => {
                             }}
                             ><Typography color='white'
                             sx={{fontFamily : 'Roboto serif', fontSize : '0.8em'}}
-                            >{filterImage[1].title}</Typography>
+                            >{news[1].fields.newsTitle}</Typography>
                             <Typography color='white'
                             sx={{fontFamily : 'Roboto serif', fontSize : '0.6em'}}
-                            >{filterImage[1].source_id}</Typography>
+                            >{news[1].fields.author}</Typography>
                             </Box>
                     </Box>
                 </Grid>
                 <Grid item xs={6} lg={3}>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[2].image_url})`,
+                        backgroundImage : `url(${news[2].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         height : '150px',
@@ -85,16 +83,16 @@ const Contributor = ({news} : any) => {
                             }}
                             ><Typography color='white'
                             sx={{fontFamily : 'Roboto serif', fontSize : '0.8em'}}
-                            >{filterImage[2].title}</Typography>
+                            >{news[2].fields.newsTitle}</Typography>
                             <Typography color='white'
                             sx={{fontFamily : 'Roboto serif', fontSize : '0.6em'}}
-                            >{filterImage[2].source_id}</Typography>
+                            >{news[2].fields.author}</Typography>
                             </Box>
                     </Box>
                 </Grid>
                 <Grid item xs={6} lg={3}>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[1].image_url})`,
+                        backgroundImage :`url(${news[1].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         height : '150px',
@@ -109,10 +107,10 @@ const Contributor = ({news} : any) => {
                             }}
                             ><Typography color='white'
                             sx={{fontFamily : 'Roboto serif', fontSize : '0.8em'}}
-                            >{filterImage[2].title}</Typography>
+                            >{news[2].fields.newsTitle}</Typography>
                             <Typography color='white'
                             sx={{fontFamily : 'Roboto serif', fontSize : '0.6em'}}
-                            >{filterImage[2].source_id}</Typography>
+                            >{news[2].fields.author}</Typography>
                             </Box>
                     </Box>
                 </Grid>

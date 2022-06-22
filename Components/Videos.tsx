@@ -5,10 +5,8 @@ import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite
 import {useMediaQuery} from '@mui/material';
 
 const Videos = ({news} : any) => {
-    const filterImage = news.filter(function(image: any) {
-        return image.image_url !== null
-    })
     const matches = useMediaQuery('(min-width:600px)');
+    console.log(news);
     return (
         <Box
         sx={{
@@ -31,7 +29,7 @@ const Videos = ({news} : any) => {
             >
                 <SplideSlide>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[0].image_url})`,
+                        backgroundImage : `url(${news[0].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -47,7 +45,7 @@ const Videos = ({news} : any) => {
                 </SplideSlide>
                 <SplideSlide>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[1].image_url})`,
+                        backgroundImage : `url(${news[1].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -62,7 +60,7 @@ const Videos = ({news} : any) => {
                 </SplideSlide>
                 <SplideSlide>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[2].image_url})`,
+                        backgroundImage : `url(${news[2].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -77,7 +75,7 @@ const Videos = ({news} : any) => {
                 </SplideSlide>
                 <SplideSlide>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[0].image_url})`,
+                        backgroundImage : `url(${news[0].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -92,7 +90,7 @@ const Videos = ({news} : any) => {
                 </SplideSlide>
                 <SplideSlide>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[1].image_url})`,
+                        backgroundImage :`url(${news[1].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -107,7 +105,7 @@ const Videos = ({news} : any) => {
                 </SplideSlide>
                 <SplideSlide>
                     <Box sx={{
-                        backgroundImage : `url(${filterImage[2].image_url})`,
+                        backgroundImage :`url(${news[2].fields.newsImage.fields.file.url})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',

@@ -1,26 +1,32 @@
 import { Container,Box,Divider } from '@mui/material'
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { useMediaQuery } from '@mui/material'
-import { GetServerSideProps } from 'next';
 // components
 import HeroNews from '../Components/HeroNews'
 import SideArticle from '../Components/SideArticle'
 import Videos from '../Components/Videos'
 import Contributor from '../Components/Contributor'
 import NewsCategory from '../Components/NewsCategory';
+import { createClient } from 'contentful';
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const apikey = process.env.API_KEY;
-  const res = await fetch(`https://newsdata.io/api/1/news?apikey=pub_8265eed20697d4f814decdd2838578db10c6&country=id`);
-  const news = await res.json();
-  
+
+export const getStaticProps: GetStaticProps = async () => {
+
+  const client = createClient({
+    space : 'p18acd3wl84h',
+    accessToken : 'iocD6zMzTZbEytD0Hu7alzU3Z7IJ-nHzyr2lhbmHwz0'
+  })
+
+  const res = await client.getEntries({ content_type : 'id'});
 
   return {
-      props : { news }
+    props : {
+      news : res.items,
+      revalidate : 1
+    }
   }
 }
-
 
 const Home: NextPage = ({news}: any) => {
   const matches = useMediaQuery('(min-width:1200px)');
@@ -35,13 +41,12 @@ const Home: NextPage = ({news}: any) => {
         display: 'flex',
         height : '450px'
       }}>
-        <HeroNews news={news.results} />
-        {matches ? <SideArticle news={news.results} /> : null}
+        <HeroNews news={news} />
+        {matches ? <SideArticle news={news} /> : null}
       </Box>
-      <Videos news={news.results} />
-      <Contributor news={news.results}/>
-      {/* news sections */}
-      <NewsCategory news={news.results} />
+      <Videos news={news} />
+      <Contributor news={news}/>
+     <NewsCategory news={news} />
     </Container>
   )
 }

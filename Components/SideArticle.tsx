@@ -1,19 +1,18 @@
 import {Typography, Box } from '@mui/material';
 import Image from 'next/image';
 
-const SideArticle = ({news}:any) => {
-    const filterImage = news.filter(function(image: any) {
-        return image.image_url !== null
-    })
-    console.log(filterImage);
+
+
+const SideArticle = ({news} : any) => {
+
     return (
         <Box sx={{padding : '10px', width : '300px'}}>
             <Typography variant='h5' component='h2'>Popular Article</Typography>
-            {filterImage.map((item:any) => {
+            {news.map((item:any) => {
                 return (
-                    <Box sx={{padding : '5px', marginBottom : '10px'}} component='div' key={item.alt}
+                    <Box sx={{padding : '5px', marginBottom : '10px'}} component='div' key={item.fields.id}
                     >
-                        <Image src={item.image_url} alt={item.title}
+                        <Image src={`https:${item.fields.newsImage.fields.file.url}`} alt={item.fields.newsTitle}
                         width={150} height={80} />
                         <Typography variant='body1'component='h3'
                         sx={{
@@ -21,7 +20,7 @@ const SideArticle = ({news}:any) => {
                             fontFamily : 'Roboto serif',
                         }}
                         >
-                            {item.title}
+                            {item.fields.newsTitle}
                         </Typography>
                         <Typography variant='body2'component='h3'
                         sx={{
@@ -29,7 +28,7 @@ const SideArticle = ({news}:any) => {
                             fontFamily : 'Roboto serif',
                         }}
                         >
-                            {item.pubDate}
+                            {item.fields.publishedTime}
                         </Typography>
                     </Box>
                 )

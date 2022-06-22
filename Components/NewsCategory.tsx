@@ -5,35 +5,34 @@ import { useMediaQuery } from "@mui/material";
 
 const NewsCategory = ({news} : any) => {
     const matches = useMediaQuery("(min-width:600px)");
-    let topCategory: any = []
+    let topCategory: string[] = []
     let businessCategory: any = []
     let politicCategory: any = []
     let healthCategory: any = []
-    const filterImage = news.filter(function(image: any) {
-        return image.image_url !== null
-    })
-    console.log(filterImage);
+    console.log(news);
 
     // filtering category
     // wtf is this ??????????????
-    for(let i = 0; i < filterImage.length; i++) {
-       if(filterImage[i].category[0] === 'top') {
-        topCategory.push(filterImage[i])
+    for(let i = 0; i < news.length; i++) {
+       if(news[i].fields.category === 'top') {
+        topCategory.push(news[i])
        }
 
-       if(filterImage[i].category[0] === 'business') {
-        businessCategory.push(filterImage[i])
+       if(news[i].fields.category === 'business') {
+        businessCategory.push(news[i])
        }
 
-       if(filterImage[i].category[0] === 'politic') {
-        politicCategory.push(filterImage[i])
+       if(news[i].fields.category === 'politics') {
+        politicCategory.push(news[i])
        }
 
-       if(filterImage[i].category[0] === 'health') {
-        healthCategory.push(filterImage[i])
+       if(news[i].fields.category === 'health') {
+        healthCategory.push(news[i])
        }
        
     }
+
+    console.log(healthCategory);
 
     
     return (
@@ -46,47 +45,16 @@ const NewsCategory = ({news} : any) => {
             <Divider textAlign='left'>Business</Divider>
             { businessCategory.map((item : any) => {
                 return (
-                    <Box key={item.title}
+                    <Box key={item.fields.id}
                     sx={{marginTop : '20px',
                     display : 'flex',
                     alignItems : 'center',
                 }}
                     >
-                        <Image src={item.image_url}
-                        alt={item.title}
-                        width={matches ? '250px' : '200px'}
-                        height={matches ? '200px' : '100px'} />
-
-                        <Box component='div'
-                        sx={{
-                            padding : '10px',
-                            width : '500px', 
-                        }}
-                        >
-                            <Typography variant='body2' component='h6'
-                            sx={{fontFamily : 'Roboto serif'}}
-                            className='newsText'
-                            >
-                                {item.title}
-                            </Typography>
-                        </Box>
-                    </Box>
-                )
-            })}
-            <Divider textAlign='left'>Top</Divider>
-            { topCategory.map((item : any) => {
-                return (
-                    <Box key={item.title}
-                    sx={{marginTop : '20px',
-                    display : 'flex',
-                    alignItems : 'center',
-                    }}
-                    >
-                        <Image src={item.image_url}
-                        alt={item.title}
+                        <Image src={`https:${item.fields.newsImage.fields.file.url}`}
+                        alt={item.fields.title}
                         width={matches ? '250px' : '200px'}
                         height={matches ? '200px' : '100px'}
-                        className='newsImage'
                         />
                         <Box component='div'
                         sx={{
@@ -98,7 +66,49 @@ const NewsCategory = ({news} : any) => {
                             sx={{fontFamily : 'Roboto serif'}}
                             className='newsText'
                             >
-                                {item.title}
+                                {item.fields.newsTitle}
+                            </Typography>
+                            <Typography variant='body2' component='h6'
+                            sx={{fontFamily : 'Roboto serif'}}
+                            className='newsSubText'
+                            >
+                                {item.fields.publishedTime}
+                            </Typography>
+                        </Box>
+                    </Box>
+                )
+            })}
+            <Divider textAlign='left'>Top</Divider>
+            { topCategory.map((item : any) => {
+                return (
+                    <Box key={item.fields.id}
+                    sx={{marginTop : '20px',
+                    display : 'flex',
+                    alignItems : 'center',
+                    }}
+                    >
+                        <Image src={`https:${item.fields.newsImage.fields.file.url}`}
+                        alt={item.fields.newsTitle}
+                        width={matches ? '250px' : '200px'}
+                        height={matches ? '200px' : '100px'}
+                        />
+                        <Box component='div'
+                        sx={{
+                            padding : '10px',
+                            width : '500px', 
+                        }}
+                        >
+                            <Typography variant='body2' component='h6'
+                            sx={{fontFamily : 'Roboto serif'}}
+                            className='newsText'
+                            >
+                                {item.fields.newsTitle}
+                            </Typography>
+                            <Typography variant='body2' component='h6'
+                            sx={{fontFamily : 'Roboto serif'}}
+                            className='newsSubText'
+                            >
+                                {item.fields.publishedTime}
                             </Typography>
                         </Box>
                     </Box>
@@ -107,17 +117,18 @@ const NewsCategory = ({news} : any) => {
             <Divider textAlign='left'>Politics</Divider>
             { politicCategory.map((item : any) => {
                 return (
-                    <Box key={item.title}
+                    <Box key={item.fields.id}
                     sx={{marginTop : '20px',
                     display : 'flex',
                     alignItems : 'center',
                     boxSizing : 'border-box',
                 }}
                     >
-                        <Image src={item.image_url}
-                        alt={item.title}
-                        width={matches ? '250px' : '200px'}
-                        height={matches ? '200px' : '100px'} />
+                        <Image src={`https:${item.fields.newsImage.fields.file.url}`}
+                        alt={item.fields.newsTitle}
+                        width={matches ? '250px' : '109px'}
+                        height={matches ? '200px' : '100px'}
+                        />
 
                         <Box component='div'
                         sx={{
@@ -128,7 +139,49 @@ const NewsCategory = ({news} : any) => {
                             sx={{fontFamily : 'Roboto serif'}}
                             className='newsText'
                             >
-                                {item.title}
+                                {item.fields.newsTitle}
+                            </Typography>
+                            <Typography variant='body2' component='h6'
+                            sx={{fontFamily : 'Roboto serif'}}
+                            className='newsSubText'
+                            >
+                                {item.fields.publishedTime}
+                            </Typography>
+                        </Box>
+                    </Box>
+                )
+            })}
+            <Divider textAlign='left'>Health</Divider>
+            { healthCategory.map((item : any) => {
+                return (
+                    <Box key={item.fields.id}
+                    sx={{marginTop : '20px',
+                    display : 'flex',
+                    alignItems : 'center',
+                    boxSizing : 'border-box',
+                }}
+                    >
+                        <Image src={`https:${item.fields.newsImage.fields.file.url}`}
+                        alt={item.fields.newsTitle}
+                        width={matches ? '250px' : '109px'}
+                        height={matches ? '200px' : '100px'}
+                        />
+                        <Box component='div'
+                        sx={{
+                            padding : '10px',
+                        }}
+                        >
+                            <Typography variant='body2' component='h6'
+                            sx={{fontFamily : 'Roboto serif'}}
+                            className='newsText'
+                            >
+                                {item.fields.newsTitle}
+                            </Typography>
+                            <Typography variant='body2' component='h6'
+                            sx={{fontFamily : 'Roboto serif'}}
+                            className='newsSubText'
+                            >
+                                {item.fields.publishedTime}
                             </Typography>
                         </Box>
                     </Box>

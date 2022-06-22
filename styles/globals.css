@@ -95,9 +95,10 @@ table {
 
 /*----------------------- news category-------------------- */
 
-.newsImage {
-	flex-shrink: 0;
-}
 .newsText {
 	font-size: 2vw;
+}
+
+.newsSubText {
+	font-size: .8vw;
 }
