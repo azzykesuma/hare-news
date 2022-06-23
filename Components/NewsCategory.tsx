@@ -9,7 +9,6 @@ const NewsCategory = ({news} : any) => {
     let businessCategory: any = []
     let politicCategory: any = []
     let healthCategory: any = []
-    console.log(news);
 
     // filtering category
     // wtf is this ??????????????
@@ -31,9 +30,6 @@ const NewsCategory = ({news} : any) => {
        }
        
     }
-
-    console.log(healthCategory);
-
     
     return (
         <Box

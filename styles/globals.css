@@ -104,3 +104,8 @@ table {
 .newsSubText {
 	font-size: .8vw;
 }
+
+/* -----------------news page ------------------------ */
+.imagePage {
+	margin-top : 30px
+}

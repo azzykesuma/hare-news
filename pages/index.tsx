@@ -34,19 +34,27 @@ export interface Props {
       author : string
       category : string
       id : number
-    }
-    newsDescription : {
-      content : object[]
-    }
-    newsImage : {
-      fields : {
-        file : {
-          url : string
+
+      newsDescription : {
+        nodeType : Document
+        content : {
+          content : {
+            value : string
+          }
+        }
+        data : Object[]
+      }
+
+      newsImage : {
+        fields : {
+          file : {
+            url : string
+          }
         }
       }
+      newsTitle : string
+      publishedTime : number
     }
-    newsTitle : string
-    publishedTime : number
   }
 }
 

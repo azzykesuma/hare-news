@@ -6,7 +6,6 @@ import {useMediaQuery} from '@mui/material';
 
 const Videos = ({news} : any) => {
     const matches = useMediaQuery('(min-width:600px)');
-    console.log(news);
     return (
         <Box
         sx={{
