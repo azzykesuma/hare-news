@@ -7,7 +7,7 @@ const HeroNews = ({news}: any) => {
     const matches = useMediaQuery('(min-width:600px)');
     const matchesDesktop = useMediaQuery('(min-width:1200px)');
     // converting title to slug
-    console.log(news[0].fields.newsTitle)
+    console.log(news[0].fields.id)
 
     return (
     <>
@@ -15,7 +15,7 @@ const HeroNews = ({news}: any) => {
             <Box className={matches ? 'tabletWrapper' : 'mobileWrapper'}>
                 <Grid container className={matchesDesktop ? 'desktopLayout' : ''}>
                     <Grid item xs={12} sx={{width : '80%'}}>
-                        <Link href={''}>
+                        <Link href={`/news/${news[0].fields.id}`}>
                             <a>
                                 <Box
                                 className={matches ? 'hero_img_tablet' : 'hero_img_mobile'}
@@ -44,7 +44,7 @@ const HeroNews = ({news}: any) => {
                 <Grid container spacing={3}
                 className={matches ? 'tabletView' : 'mobileView'}>
                     <Grid item xs={6} sm={12} lg={12}>
-                        <Link href=''>
+                        <Link href={`/news/${news[1].fields.id}`}>
                             <a>
                                 <Box 
                                 className={matches ? 'tabletImg' : 'mobileImg'}
@@ -71,7 +71,7 @@ const HeroNews = ({news}: any) => {
                         </Link>
                     </Grid>
                     <Grid item xs={6} sm={12} lg={12}>
-                        <Link href='/'>
+                        <Link href={`/news/${news[2].fields.id}`}>
                             <a>
                                 <Box 
                                 className={matches ? 'tabletImg' : 'mobileImg'}

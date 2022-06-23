@@ -28,8 +28,36 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const Home: NextPage = ({news}: any) => {
+export interface Props {
+  news : {
+    fields : {
+      author : string
+      category : string
+      id : number
+    }
+    newsDescription : {
+      content : object[]
+    }
+    newsImage : {
+      fields : {
+        file : {
+          url : string
+        }
+      }
+    }
+    newsTitle : string
+    publishedTime : number
+  }
+}
+
+export interface arrayProps {
+  news : Props[]
+}
+
+
+const Home: NextPage<arrayProps> = ({news}) => {
   const matches = useMediaQuery('(min-width:1200px)');
+
   return (
     <Container disableGutters maxWidth='lg'>
       <Head>
