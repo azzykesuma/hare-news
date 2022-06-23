@@ -45,7 +45,9 @@ const NewsCategory = ({news} : any) => {
             <Divider textAlign='left'>Business</Divider>
             { businessCategory.map((item : any) => {
                 return (
-                    <Link href={`/news/${item.fields.id}`}>
+                    <Link href={`/news/${item.fields.id}`}
+                    key={item.fields.id}
+                    >
                         <a>
                             <Box key={item.fields.id}
                             sx={{marginTop : '20px',
@@ -85,7 +87,9 @@ const NewsCategory = ({news} : any) => {
             <Divider textAlign='left'>Top</Divider>
             { topCategory.map((item : any) => {
                 return (
-                    <Link href={`/news/${item.fields.id}`}>
+                    <Link href={`/news/${item.fields.id}`}
+                    key={item.fields.id}
+                    >
                         <a>
                             <Box key={item.fields.id}
                             sx={{marginTop : '20px',
@@ -125,7 +129,9 @@ const NewsCategory = ({news} : any) => {
             <Divider textAlign='left'>Politics</Divider>
             { politicCategory.map((item : any) => {
                 return (
-                    <Link href={`/news/${item.fields.id}`}>
+                    <Link href={`/news/${item.fields.id}`}
+                    key={item.fields.id}
+                    >
                         <a>
                             <Box key={item.fields.id}
                             sx={{marginTop : '20px',
@@ -166,7 +172,9 @@ const NewsCategory = ({news} : any) => {
             <Divider textAlign='left'>Health</Divider>
             { healthCategory.map((item : any) => {
                 return (
-                    <Link href={`/news/${item.fields.id}`}>
+                    <Link href={`/news/${item.fields.id}`}
+                    key={item.fields.id}
+                    >
                         <a>
                             <Box key={item.fields.id}
                             sx={{marginTop : '20px',

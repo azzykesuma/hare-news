@@ -11,7 +11,7 @@ const client = createClient({
 export const getStaticPaths : GetStaticPaths = async() => {
     const res = await client.getEntries({ content_type : 'id'});
 
-    const paths = res.items.map((item) => ({
+    const paths = res.items.map((item : any) => ({
         params : { id : item.fields.id.toString()}
     }))
 
