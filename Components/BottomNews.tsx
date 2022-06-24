@@ -22,6 +22,7 @@ const BottomNews = ({news} : any) => {
                                     height = {200}
                                     width = {200}
                                     layout = 'responsive'
+                                    alt={news.fields.title}
                                     />
                                     <Typography variant='h6' component='h4'
                                     sx={{fontFamily : 'Roboto serif', fontWeight : '400',

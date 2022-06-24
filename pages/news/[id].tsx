@@ -1,13 +1,13 @@
 import React from 'react'
 import { createClient } from 'contentful'
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
-import { Props } from '../index'
 import { Box, Container, Typography,Divider,Grid } from '@mui/material'
 import Image from 'next/image'
 import { useMediaQuery } from '@mui/material'
 import SideArticle from '../../Components/SideArticle'
 import BottomNews from '../../Components/BottomNews'
 import Head from 'next/head'
+
 const client = createClient({
     space : 'p18acd3wl84h',
     accessToken : 'iocD6zMzTZbEytD0Hu7alzU3Z7IJ-nHzyr2lhbmHwz0'
@@ -55,7 +55,8 @@ export const getStaticProps : GetStaticProps = async({params}) => {
 }
 
 
-const newsPage: NextPage = ({ news,allNews}) => {
+
+const NewsPage = ({news,allNews} : any) => {
 
     const matches = useMediaQuery('(min-width:1200px)');
 
@@ -101,6 +102,7 @@ const newsPage: NextPage = ({ news,allNews}) => {
                         width='150px'
                         height='70px'
                         className='imagePage'
+                        alt={news.fields.title}
                         />
                     </Box>
                     <Typography variant='h6' component='h1'
@@ -135,4 +137,4 @@ const newsPage: NextPage = ({ news,allNews}) => {
     )
 }
 
-export default newsPage
+export default NewsPage
