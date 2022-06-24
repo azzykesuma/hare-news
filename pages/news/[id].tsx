@@ -59,7 +59,6 @@ export const getStaticProps : GetStaticProps = async({params}) => {
 const NewsPage = ({news,allNews} : any) => {
 
     const matches = useMediaQuery('(min-width:1200px)');
-
     return (
         <>
             <Head>
@@ -102,7 +101,7 @@ const NewsPage = ({news,allNews} : any) => {
                         width='150px'
                         height='70px'
                         className='imagePage'
-                        alt={news.fields.title}
+                        alt={news.fields.newsTitle}
                         />
                     </Box>
                     <Typography variant='h6' component='h1'
