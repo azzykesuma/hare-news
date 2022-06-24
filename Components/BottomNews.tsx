@@ -1,30 +1,39 @@
 import React from 'react'
 import { useMediaQuery,Grid,Box, Typography } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link'
 
 const BottomNews = ({news} : any) => {
-    const matches = useMediaQuery('(min-width:600px)');
+    const matchesTablet = useMediaQuery('(min-width:600px)');
+    const matchesDesktop = useMediaQuery('(min-width:1200px)');
+
     console.log(news);
     return (
         <>
             {news.map((item:any) => (
-                <Grid container sx={{ marginTop : '30px', width : '70%'}}>
-                    <Grid item xs={12} md={6}>
-                        <Box>
-                            <Image src={'https:' + item.fields.newsImage.fields.file.url}
-                            height='200px'
-                            width='200px'
-                            />
-                            <Typography variant='h6' component='h4'
-                            sx={{fontFamily : 'Roboto serif', fontWeight : '400',
-                            width : '200px'
-                        }}
-                            >
-                                {item.fields.newsTitle}
-                            </Typography>
-                        </Box>
+                    <Grid item xs={6} lg={4} key={item.fields.id}>
+                        <Link href={`/news/${item.fields.id}`}>
+                            <a>
+                                <Box sx={{
+                                    maxWidth : '200px',
+                                    display : 'block'
+                                    }}>
+                                    <Image src={'https:' + item.fields.newsImage.fields.file.url}
+                                    height = {200}
+                                    width = {200}
+                                    layout = 'responsive'
+                                    />
+                                    <Typography variant='h6' component='h4'
+                                    sx={{fontFamily : 'Roboto serif', fontWeight : '400',
+                                    fontSize : matchesTablet ? '16px' : '12px'
+                                    }}
+                                >
+                                        {item.fields.newsTitle}
+                                    </Typography>
+                                </Box>
+                            </a>
+                        </Link>
                     </Grid>
-                </Grid>
             ))}
         </>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 import { createClient } from 'contentful'
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import { Props } from '../index'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container, Typography,Divider,Grid } from '@mui/material'
 import Image from 'next/image'
 import { useMediaQuery } from '@mui/material'
 import SideArticle from '../../Components/SideArticle'
@@ -86,7 +86,7 @@ const newsPage: NextPage = ({ news,allNews}) => {
                     ) : null}
                 <Box
                 sx={{
-                    width : '70%',
+                    width : matches ? '70%' : '100%',
                     alignSelf : 'flex-start'
                 }}
                 >
@@ -126,7 +126,10 @@ const newsPage: NextPage = ({ news,allNews}) => {
                     </Typography>
                     </Box>
                 </Box>
-                <BottomNews news={allNews}/>
+                <Divider textAlign='center' sx={{marginBlock : '10px', maxWidth : '70%'}}>More news</Divider>
+                <Grid container spacing={2} sx={{maxWidth : '70%'}}>
+                    <BottomNews news={allNews}/>
+                </Grid>
             </Container>
         </>
     )

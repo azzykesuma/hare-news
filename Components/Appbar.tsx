@@ -44,7 +44,7 @@ const Appbar = () => {
                     justifyContent : 'space-between',
                 }}
                 >
-                    <Typography>Hare News</Typography>
+                    <Link href='/'><a><Typography>Hare News</Typography></a></Link>
                     {/* removing mobile nav in 600 px */}
                     {matches ? 
                         <ul className='tabletNav'>
