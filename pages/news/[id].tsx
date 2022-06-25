@@ -58,7 +58,7 @@ export const getStaticProps : GetStaticProps = async({params}) => {
 
 const NewsPage = ({news,allNews} : any) => {
 
-    const matches = useMediaQuery('(min-width:1200px)');
+    const matches = useMediaQuery('(min-width:1000px)');
     return (
         <>
             <Head>
@@ -127,8 +127,8 @@ const NewsPage = ({news,allNews} : any) => {
                     </Typography>
                     </Box>
                 </Box>
-                <Divider textAlign='center' sx={{marginBlock : '10px', maxWidth : '70%'}}>More news</Divider>
-                <Grid container spacing={2} sx={{maxWidth : '70%'}}>
+                <Divider textAlign='center' sx={{marginBlock : '10px',  maxWidth : matches ? '70%' : '100%'}}>More news</Divider>
+                <Grid container spacing={2} sx={{maxWidth : matches ? '70%' : '100%'}}>
                     <BottomNews news={allNews}/>
                 </Grid>
             </Container>

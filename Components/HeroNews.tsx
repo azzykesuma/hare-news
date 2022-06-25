@@ -6,8 +6,6 @@ import Link from 'next/link'
 const HeroNews = ({news}: any) => {
     const matches = useMediaQuery('(min-width:600px)');
     const matchesDesktop = useMediaQuery('(min-width:1200px)');
-    // converting title to slug
-    console.log(news[0].fields.id)
 
     return (
     <>
